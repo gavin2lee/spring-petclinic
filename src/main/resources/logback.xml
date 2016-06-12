@@ -2,6 +2,19 @@
 <!DOCTYPE xml>
 
 <configuration scan="true" scanPeriod="30 seconds">
+	<property name="LOG_HOME" value="/home/gavin/Dev/logs" />
+    <property name="PROJECT_NAME" value="petclinic"/>
+    
+    <appender name="LogDayFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <Encoding>UTF-8</Encoding>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/${PROJECT_NAME}/logFile.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
 
     <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
         <resetJUL>true</resetJUL>
@@ -15,6 +28,10 @@
             <pattern>%-5level %logger{0} - %msg%n</pattern>
         </encoder>
     </appender>
+    
+    <logger name="org.springframework" level="DEBUG" additivity="false">
+        <appender-ref ref="LogDayFile"/>
+    </logger>
 
     <!--<logger name="org.hibernate" level="debug"/> -->
     <logger name="org.springframework.samples.petclinic" level="debug"/>
