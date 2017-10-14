@@ -36,8 +36,8 @@
         <mysql-driver.version>5.1.36</mysql-driver.version>
 
         <!-- Web dependencies -->
-        <dandelion.version>1.1.1</dandelion.version>
-        <dandelion.datatables.version>1.1.0</dandelion.datatables.version>
+        <dandelion.version>1.0.1</dandelion.version>
+        <dandelion.datatables.version>1.0.1</dandelion.datatables.version>
 
         <cobertura.version>2.7</cobertura.version>
 
@@ -286,6 +286,10 @@
             </testResource>
         </testResources>
         <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
